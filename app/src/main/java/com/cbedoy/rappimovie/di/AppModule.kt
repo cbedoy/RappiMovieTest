@@ -1,4 +1,7 @@
 package com.cbedoy.rappimovie.di
 
-class AppModule {
+import org.koin.dsl.module
+
+val appModule = module {
+
 }
