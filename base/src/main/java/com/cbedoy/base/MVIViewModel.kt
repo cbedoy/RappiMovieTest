@@ -1,5 +1,6 @@
 package com.cbedoy.base
 
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -12,7 +13,7 @@ typealias Producer<State> = suspend (Flow<State>) -> Unit
 abstract class MVIViewModel <State, Intent>(
     initialState: State,
     coroutineScope: CoroutineScope
-) {
+) : ViewModel() {
 
     private val intentChannel = Channel<Intent>(Channel.UNLIMITED)
 
@@ -21,7 +22,8 @@ abstract class MVIViewModel <State, Intent>(
         get() = _state
 
     abstract suspend fun onCollect(intent: Intent, producer: Producer<State>)
-    abstract val tagLogger: String
+
+    open val tagLogger: String = "vm"
 
     fun performActionWithIntent(intent: Intent){
         intentChannel.offer(intent)
@@ -35,7 +37,7 @@ abstract class MVIViewModel <State, Intent>(
 
     private suspend fun handleIntents(){
         intentChannel.consumeAsFlow().collect { intent ->
-            println("ViewModel -> tagLogger.handleIntent($intent)")
+            println("ViewModel -> $tagLogger.handleIntent($intent)")
             onCollect(intent){ flow ->
                 flow.flowOn(
                     Dispatchers.IO
