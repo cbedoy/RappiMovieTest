@@ -1,9 +1,9 @@
-package com.cbedoy.feature_movielist
+package com.cbedoy.feature_movielist.presentation.ui
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.cbedoy.core.data.database.Movie
+import com.cbedoy.core.data.database.models.Movie
 import com.cbedoy.feature_movielist.databinding.ViewHolderMovieBinding
 
 class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

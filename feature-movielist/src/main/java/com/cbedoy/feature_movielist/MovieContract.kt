@@ -1,4 +1,14 @@
 package com.cbedoy.feature_movielist
 
-class MovieContract {
+import com.cbedoy.core.data.database.models.Movie
+import com.cbedoy.feature_movielist.domain.FilterMovieOption
+
+sealed class MovieListState {
+    object Ilde: MovieListState()
+    data class ShowLoader(val isVisible: Boolean): MovieListState()
+    data class OnLoadMovies(val movies: List<Movie>): MovieListState()
+}
+
+sealed class MovieListIntent {
+    data class LoadMoviesSortedBy(val filterMovieOption: FilterMovieOption): MovieListIntent()
 }

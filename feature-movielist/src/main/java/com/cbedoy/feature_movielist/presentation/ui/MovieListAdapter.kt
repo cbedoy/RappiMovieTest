@@ -1,10 +1,11 @@
-package com.cbedoy.feature_movielist
+package com.cbedoy.feature_movielist.presentation.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.cbedoy.core.data.database.Movie
+import com.cbedoy.core.data.database.models.Movie
+import com.cbedoy.feature_movielist.R
 
 class MovieListAdapter(
     private val onSelectedMovie: (Movie) -> Unit
