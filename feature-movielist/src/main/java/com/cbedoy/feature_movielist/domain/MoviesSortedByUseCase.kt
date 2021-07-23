@@ -8,13 +8,6 @@ import kotlinx.coroutines.flow.flow
 class MoviesSortedByUseCase(
     private val repository: MovieRepository
 ) {
-
-    val allMoviesState = flow<MovieListState> {
-        repository.allMoviesFlow.collect {
-            emit(MovieListState.OnLoadMovies(it))
-        }
-    }
-
     fun loadMoviesFilterBy(filterMovieOption: FilterMovieOption) = flow {
         emit(MovieListState.ShowLoader(isVisible = true))
 
@@ -22,6 +15,8 @@ class MoviesSortedByUseCase(
             repository.loadPopularMovies()
         } else {
             repository.loadTopRatedMovies()
+        }.collect {
+            emit(MovieListState.OnLoadMovies(movies = it))
         }
 
         emit(MovieListState.ShowLoader(isVisible = false))

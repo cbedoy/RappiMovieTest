@@ -16,18 +16,6 @@ class MovieListViewModel(
     private val useCase: MoviesSortedByUseCase
 ) : MVIViewModel<MovieListState, MovieListIntent>(MovieListState.Ilde, coroutineScope) {
 
-    private val _asyncMoviesState = MutableStateFlow<MovieListState>(MovieListState.Ilde)
-    val asyncMoviesState: StateFlow<MovieListState>
-        get() = _asyncMoviesState
-
-    init {
-        coroutineScope.launch {
-            useCase.allMoviesState.collect { newState ->
-                _asyncMoviesState.value = newState
-            }
-        }
-    }
-
     override suspend fun onCollect(intent: MovieListIntent, producer: Producer<MovieListState>) {
         when(intent) {
             is MovieListIntent.LoadMoviesSortedBy -> {

@@ -16,12 +16,17 @@ class MovieRepositoryImpl(
     override val allMoviesFlow: Flow<List<Movie>>
         get() = dao.getAllMoviesAsFlow()
 
-    override suspend fun loadTopRatedMovies() {
+    override suspend fun loadTopRatedMovies() = flow {
+
+        emit(dao.getTopRated())
+
         when(val response = service.getTopRatedMovies()) {
             is NetworkResponse.Success -> {
                 val movies = response.body.results.map { it.toMovie() }
 
                 dao.insertAll(movies)
+
+                emit(dao.getTopRated())
             }
             is NetworkResponse.ServerError -> {
                 response.body
@@ -32,12 +37,16 @@ class MovieRepositoryImpl(
         }
     }
 
-    override suspend fun loadPopularMovies(){
+    override suspend fun loadPopularMovies() = flow{
+        emit(dao.getPopularMovies())
+
         when(val response = service.getPopularMovies()) {
             is NetworkResponse.Success -> {
                 val movies = response.body.results.map { it.toMovie() }
 
                 dao.insertAll(movies)
+
+                emit(dao.getPopularMovies())
             }
         }
     }

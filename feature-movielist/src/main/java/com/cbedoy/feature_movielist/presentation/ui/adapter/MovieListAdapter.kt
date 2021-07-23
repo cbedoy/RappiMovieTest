@@ -1,4 +1,4 @@
-package com.cbedoy.feature_movielist.presentation.ui
+package com.cbedoy.feature_movielist.presentation.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,18 +12,6 @@ class MovieListAdapter(
 ) : ListAdapter<Movie, MovieViewHolder>(
     MovieListAdapterDiffUtil
 ){
-    companion object {
-        object MovieListAdapterDiffUtil : DiffUtil.ItemCallback<Movie>() {
-            override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-                return oldItem.uuid == newItem.uuid
-            }
-
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(
@@ -40,6 +28,17 @@ class MovieListAdapter(
         holder.itemView.setOnClickListener {
             onSelectedMovie(getItem(position))
         }
+    }
+
+}
+
+object MovieListAdapterDiffUtil : DiffUtil.ItemCallback<Movie>() {
+    override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+        return oldItem.uuid == newItem.uuid
     }
 
 }

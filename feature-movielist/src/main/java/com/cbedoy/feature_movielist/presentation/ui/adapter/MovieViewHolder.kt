@@ -1,4 +1,4 @@
-package com.cbedoy.feature_movielist.presentation.ui
+package com.cbedoy.feature_movielist.presentation.ui.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

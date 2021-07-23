@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RappiMovie</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="popular">Popular</string>
 </resources>

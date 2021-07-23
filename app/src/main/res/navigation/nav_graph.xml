@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/movieListFragment">
-
-    <fragment
-        android:id="@+id/movieListFragment"
-        android:name="com.cbedoy.feature_movielist.presentation.ui.MovieListFragment"
-        android:label="MovieListFragment" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_graph_popular">
+    <include app:graph="@navigation/feature_nav_graph_top_rated" />
+    <include app:graph="@navigation/feature_nav_graph_popular" />
 </navigation>

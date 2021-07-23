@@ -1,22 +1,31 @@
 package com.cbedoy.rappimovie
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import com.cbedoy.feature_movielist.presentation.ui.MovieListFragment
-import com.cbedoy.rappimovie.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        val navHostFragment = supportFragmentManager.findFragmentById(
+                R.id.nav_host_fragment
+        ) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        setContentView(binding.root)
+        // Setup the bottom navigation view with navController
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        bottomNavigationView.setupWithNavController(navController)
 
-        supportFragmentManager.beginTransaction()
-            .replace(binding.container.id, MovieListFragment())
-            .commit()
+        // Setup the ActionBar with navController and 2 top level destinations
+        val appBarConfiguration = AppBarConfiguration(
+                setOf(R.id.nav_graph_top_rated, R.id.nav_graph_popular)
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 }

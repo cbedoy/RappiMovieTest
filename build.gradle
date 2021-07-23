@@ -6,7 +6,6 @@ buildscript {
         okhttp3_version = "4.8.0"
         location_version = "17.1.0"
         places_version = "2.3.0"
-        nav_version = "2.3.1"
         room_version = "2.3.0"
 
         // Kotlin
@@ -17,6 +16,9 @@ buildscript {
         material_design = "1.4.0"
         core_ktx = "1.6.0"
         paging_version = "3.0.1"
+        fragment_version = "1.3.6"
+        nav_version = "2.3.5"
+        app_compat = "1.3.1"
 
         // Coroutines
         kotlinx_coroutines_version = "1.4.2"

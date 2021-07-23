@@ -7,7 +7,7 @@ interface MovieRepository {
 
     val allMoviesFlow: Flow<List<Movie>>
 
-    suspend fun loadPopularMovies()
+    suspend fun loadPopularMovies(): Flow<List<Movie>>
 
-    suspend fun loadTopRatedMovies()
+    suspend fun loadTopRatedMovies(): Flow<List<Movie>>
 }
