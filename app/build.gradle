@@ -56,11 +56,9 @@ dependencies {
     api "org.koin:koin-androidx-viewmodel:$koin_version"
     api "org.koin:koin-core:$koin_version"
 
-    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_view_model"
-    api "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_live_data"
-    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime"
-
+    api "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_view_model"
 
     api "com.jakewharton.timber:timber:$timber_version"
 
