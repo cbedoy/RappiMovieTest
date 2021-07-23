@@ -45,6 +45,8 @@ dependencies {
     api project(":base")
     api project(":core")
 
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime"
+
     api "io.coil-kt:coil:$coil_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version"
@@ -52,6 +54,9 @@ dependencies {
     api "org.koin:koin-android:$koin_version"
     api "org.koin:koin-androidx-viewmodel:$koin_version"
     api "org.koin:koin-core:$koin_version"
+
+    api "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    api 'com.squareup.okhttp3:logging-interceptor:4.8.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
