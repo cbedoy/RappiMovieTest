@@ -1,21 +1,21 @@
 package com.cbedoy.core.data.response
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class MovieResponse(
     val page: Int = 0,
     val results: List<MovieResult> = emptyList()
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class MovieResult(
     val adult: Boolean = false,
     val title: String = "",
     val overview: String = "",
     val id: Long = 0,
     val popularity: Float = 0F,
-    @Json(name = "release_date") val releaseDate: String?= "",
-    @Json(name = "poster_path") val posterPath: String?= ""
+    @SerialName(value = "release_date") val releaseDate: String?= "",
+    @SerialName(value = "poster_path") val posterPath: String?= ""
 )

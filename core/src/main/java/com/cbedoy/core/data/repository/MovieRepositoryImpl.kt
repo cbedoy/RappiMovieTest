@@ -5,6 +5,7 @@ import com.cbedoy.core.data.database.models.Movie
 import com.cbedoy.core.data.response.MovieResult
 import com.cbedoy.core.data.service.MovieService
 import com.haroldadmin.cnradapter.NetworkResponse
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class MovieRepositoryImpl(
@@ -12,35 +13,34 @@ class MovieRepositoryImpl(
     private val dao: MovieDao
 ) : MovieRepository {
 
-    override suspend fun loadTopRatedMovies() = flow {
+    override val allMoviesFlow: Flow<List<Movie>>
+        get() = dao.getAllMoviesAsFlow()
 
-        emit(dao.getTopRated())
-
+    override suspend fun loadTopRatedMovies() {
         when(val response = service.getTopRatedMovies()) {
             is NetworkResponse.Success -> {
                 val movies = response.body.results.map { it.toMovie() }
 
                 dao.insertAll(movies)
-
-                emit(dao.getTopRated())
+            }
+            is NetworkResponse.ServerError -> {
+                response.body
+            }
+            is NetworkResponse.UnknownError -> {
+                response.error.printStackTrace()
             }
         }
     }
 
-    override suspend fun loadPopularMovies() = flow {
-        emit(dao.getPopularMovies())
-
+    override suspend fun loadPopularMovies(){
         when(val response = service.getPopularMovies()) {
             is NetworkResponse.Success -> {
                 val movies = response.body.results.map { it.toMovie() }
 
                 dao.insertAll(movies)
-
-                emit(dao.getPopularMovies())
             }
         }
     }
-
 
     private fun MovieResult.toMovie(): Movie {
         return Movie(

@@ -9,15 +9,19 @@ class MoviesSortedByUseCase(
     private val repository: MovieRepository
 ) {
 
+    val allMoviesState = flow<MovieListState> {
+        repository.allMoviesFlow.collect {
+            emit(MovieListState.OnLoadMovies(it))
+        }
+    }
+
     fun loadMoviesFilterBy(filterMovieOption: FilterMovieOption) = flow {
         emit(MovieListState.ShowLoader(isVisible = true))
 
-        if (filterMovieOption == FilterMovieOption.Treading) {
+        if (filterMovieOption == FilterMovieOption.Popularity) {
             repository.loadPopularMovies()
         } else {
             repository.loadTopRatedMovies()
-        }.collect {
-            emit(MovieListState.OnLoadMovies(movies = it))
         }
 
         emit(MovieListState.ShowLoader(isVisible = false))

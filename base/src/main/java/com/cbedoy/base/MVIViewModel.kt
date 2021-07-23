@@ -23,6 +23,10 @@ abstract class MVIViewModel <State, Intent>(
 
     abstract suspend fun onCollect(intent: Intent, producer: Producer<State>)
 
+    open suspend fun subscribeTo(producer: Producer<State>) {
+
+    }
+
     open val tagLogger: String = "vm"
 
     fun performActionWithIntent(intent: Intent){

@@ -6,11 +6,27 @@ import com.cbedoy.feature_movielist.MovieListIntent
 import com.cbedoy.feature_movielist.MovieListState
 import com.cbedoy.feature_movielist.domain.MoviesSortedByUseCase
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MovieListViewModel(
     coroutineScope: CoroutineScope,
     private val useCase: MoviesSortedByUseCase
 ) : MVIViewModel<MovieListState, MovieListIntent>(MovieListState.Ilde, coroutineScope) {
+
+    private val _asyncMoviesState = MutableStateFlow<MovieListState>(MovieListState.Ilde)
+    val asyncMoviesState: StateFlow<MovieListState>
+        get() = _asyncMoviesState
+
+    init {
+        coroutineScope.launch {
+            useCase.allMoviesState.collect { newState ->
+                _asyncMoviesState.value = newState
+            }
+        }
+    }
 
     override suspend fun onCollect(intent: MovieListIntent, producer: Producer<MovieListState>) {
         when(intent) {
@@ -19,4 +35,5 @@ class MovieListViewModel(
             }
         }
     }
+
 }

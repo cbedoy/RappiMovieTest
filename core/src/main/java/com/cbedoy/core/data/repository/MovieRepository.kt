@@ -5,7 +5,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
 
-    suspend fun loadPopularMovies(): Flow<List<Movie>>
+    val allMoviesFlow: Flow<List<Movie>>
 
-    suspend fun loadTopRatedMovies(): Flow<List<Movie>>
+    suspend fun loadPopularMovies()
+
+    suspend fun loadTopRatedMovies()
 }

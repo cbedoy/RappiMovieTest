@@ -10,5 +10,5 @@ sealed class MovieListState {
 }
 
 sealed class MovieListIntent {
-    data class LoadMoviesSortedBy(val filterMovieOption: FilterMovieOption): MovieListIntent()
+    data class LoadMoviesSortedBy(val filterMovieOption: FilterMovieOption = FilterMovieOption.All): MovieListIntent()
 }
