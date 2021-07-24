@@ -33,14 +33,14 @@ android {
 }
 
 dependencies {
+    implementation project(":feature-movielist")
+    implementation project(":feature-moviedetail")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:$core_ktx"
     implementation "androidx.appcompat:appcompat:$app_compat"
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-
-    implementation project(":feature-movielist")
 
     api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_stdlib"
     api "androidx.core:core-ktx:$core_ktx"
@@ -54,6 +54,7 @@ dependencies {
 
     api "androidx.navigation:navigation-fragment-ktx:$nav_version"
     api "androidx.navigation:navigation-ui-ktx:$nav_version"
+
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

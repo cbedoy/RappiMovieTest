@@ -6,13 +6,16 @@ import android.view.View
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.cbedoy.core.data.database.models.Movie
 import com.cbedoy.feature_movielist.MovieListIntent
 import com.cbedoy.feature_movielist.MovieListState
 import com.cbedoy.feature_movielist.R
 import com.cbedoy.feature_movielist.databinding.FragmentMovielistBinding
 import com.cbedoy.feature_movielist.domain.FilterMovieOption
 import com.cbedoy.feature_movielist.presentation.MovieListViewModel
+import com.cbedoy.feature_movielist.presentation.ui.TopRatedMovieListFragmentDirections
 import com.cbedoy.feature_movielist.presentation.ui.adapter.MovieListAdapter
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -21,6 +24,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 abstract class MovieListFragment : Fragment(R.layout.fragment_movielist) {
 
     abstract val filter: FilterMovieOption
+    abstract val onSelectedMovie: (Movie) -> Unit
 
     private val viewModel by viewModel<MovieListViewModel>()
     private val isLandscapeOrientation
@@ -32,7 +36,7 @@ abstract class MovieListFragment : Fragment(R.layout.fragment_movielist) {
         )
 
     private val movieListAdapter = MovieListAdapter {
-
+        onSelectedMovie(it)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

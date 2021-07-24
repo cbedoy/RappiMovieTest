@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_top_rated"
+    app:startDestination="@id/fragment_popular_top_rated">
+
+    <fragment
+        android:id="@+id/fragment_popular_top_rated"
+        tools:layout="@layout/fragment_movielist"
+        android:name="com.cbedoy.feature_movielist.presentation.ui.TopRatedMovieListFragment"
+        android:label="@string/top_rated" >
+        <action
+            android:id="@+id/action_fragment_popular_top_rated_to_fragmentMovieDetail"
+            app:destination="@id/fragmentMovieDetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentMovieDetail"
+        tools:layout="@layout/fragment_movie_detail"
+        android:name="com.cbedoy.feature_moviedetail.presentation.FragmentMovieDetail"
+        android:label="@string/detail" >
+        <argument
+            android:name="movie"
+            app:argType="com.cbedoy.core.data.database.models.Movie" />
+    </fragment>
+
+
+</navigation>

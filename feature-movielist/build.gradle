@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id "androidx.navigation.safeargs"
 }
 
 android {
@@ -44,6 +45,7 @@ dependencies {
 
     api project(":base")
     api project(":core")
+    api project(":feature-moviedetail")
 
     api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime"
 
@@ -57,6 +59,8 @@ dependencies {
 
     api "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     api 'com.squareup.okhttp3:logging-interceptor:4.8.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
