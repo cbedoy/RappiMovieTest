@@ -13,6 +13,6 @@ interface MovieRepository {
 
     val topRatedMoviesFlow: Flow<PagingData<Movie>>
 
-    suspend fun requestMovieVideoDetails(movieId: String): NetworkResponse<MovieVideoResponse, Void>
+    suspend fun requestMovieVideoDetails(movieId: Long): NetworkResponse<MovieVideoResponse, Void>
 
 }

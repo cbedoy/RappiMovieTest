@@ -21,7 +21,7 @@ class MovieRepositoryImpl(
     private val popularMoviesPagingSource: PopularMoviesPagingSource
 ) : MovieRepository {
 
-    override suspend fun requestMovieVideoDetails(movieId: String): NetworkResponse<MovieVideoResponse, Void> {
+    override suspend fun requestMovieVideoDetails(movieId: Long): NetworkResponse<MovieVideoResponse, Void> {
         return service.getVideoDetails(movieId = movieId)
     }
 

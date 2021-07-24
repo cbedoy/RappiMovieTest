@@ -2,6 +2,7 @@ package com.cbedoy.rappimovie
 
 import android.app.Application
 import com.cbedoy.core.di.coreModule
+import com.cbedoy.feature_moviedetail.di.featureMovieDetailModule
 import com.cbedoy.feature_movielist.di.featureMovieListModule
 import com.cbedoy.rappimovie.di.appModule
 import org.koin.android.ext.koin.androidContext
@@ -15,7 +16,7 @@ class MovieApp : Application() {
             modules(
                 appModule,
                 coreModule,
-                featureMovieListModule
+                featureMovieListModule, featureMovieDetailModule
             )
             androidContext(this@MovieApp)
         }

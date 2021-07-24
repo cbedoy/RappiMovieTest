@@ -15,62 +15,98 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card"
-            app:cardCornerRadius="16dp"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
+                app:cardCornerRadius="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:orientation="vertical">
-
-                <!-- Media -->
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    tools:srcCompat="@tools:sample/avatars" />
+                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:background="@android:color/white"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/titleView"
-                        android:layout_width="wrap_content"
+                    <!-- Media -->
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="?android:attr/textColorPrimary"
-                        tools:text="A movie title" />
+                        android:adjustViewBounds="true"
+                        tools:srcCompat="@tools:sample/avatars" />
 
-                    <TextView
-                        android:id="@+id/overviewView"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColor="?android:attr/textColorSecondary"
-                        tools:text="A movie description which contains more than one line, only keep in mind this a wireframe that represents how probably going to be" />
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:textColor="?android:attr/textColorSecondary"
-                        tools:text="A movie description which contains more than one lines" />
+                        <TextView
+                            android:id="@+id/titleView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:textSize="20sp"
+                            tools:text="A movie title" />
+
+                        <TextView
+                            android:id="@+id/overviewView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textSize="15sp"
+                            android:textColor="?android:attr/textColorSecondary"
+                            tools:text="A movie description which contains more than one line, only keep in mind this a wireframe that represents how probably going to be" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:textColor="?android:attr/textColorSecondary"
+                            tools:text="A movie description which contains more than one lines" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                app:cardCornerRadius="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        tools:listitem="@layout/view_holder_preview"
+                        tools:itemCount="2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

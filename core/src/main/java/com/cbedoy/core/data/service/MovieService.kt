@@ -3,6 +3,7 @@ package com.cbedoy.core.data.service
 import com.cbedoy.core.data.response.MovieResponse
 import com.haroldadmin.cnradapter.NetworkResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieService {
@@ -22,7 +23,7 @@ interface MovieService {
 
     @GET("3/movie/{movieId}/videos")
     suspend fun getVideoDetails(
-            @Query("movieId") movieId: String,
+            @Path("movieId") movieId: Long,
             @Query("api_key") apiKey: String = "2754de7d0f03edc5c2d26999716f731f",
     ) : NetworkResponse<MovieVideoResponse, Void>
 }
