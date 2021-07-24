@@ -60,6 +60,7 @@ val coreModule = module {
     single<MovieRepository>{
         MovieRepositoryImpl(
             coroutineScope = get(),
+                service = get(),
             topRatedMoviesPagingSource = get(),
             popularMoviesPagingSource = get()
         )

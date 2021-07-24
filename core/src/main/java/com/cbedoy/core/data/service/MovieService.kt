@@ -19,4 +19,10 @@ interface MovieService {
         @Query("language") language: String = "en-US",
         @Query("page") page: Int = 1
     ) : NetworkResponse<MovieResponse, Void>
+
+    @GET("3/movie/{movieId}/videos")
+    suspend fun getVideoDetails(
+            @Query("movieId") movieId: String,
+            @Query("api_key") apiKey: String = "2754de7d0f03edc5c2d26999716f731f",
+    ) : NetworkResponse<MovieVideoResponse, Void>
 }
