@@ -33,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -49,6 +52,7 @@ dependencies {
     api "com.squareup.okhttp3:okhttp:4.8.0"
 
     api 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    api "io.coil-kt:coil:$coil_version"
 
     api "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"

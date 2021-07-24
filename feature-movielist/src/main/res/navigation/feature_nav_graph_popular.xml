@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/fragment_popular"
         tools:layout="@layout/fragment_movielist"
-        android:name="com.cbedoy.feature_movielist.presentation.ui.PopularMovieListFragment"
+        android:name="com.cbedoy.feature_movielist.ui.PopularMovieListFragment"
         android:label="@string/popular" >
         <action
             android:id="@+id/action_fragment_popular_to_fragmentMovieDetail"

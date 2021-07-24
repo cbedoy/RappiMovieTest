@@ -31,9 +31,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -49,7 +46,6 @@ dependencies {
 
     api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime"
 
-    api "io.coil-kt:coil:$coil_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version"
 

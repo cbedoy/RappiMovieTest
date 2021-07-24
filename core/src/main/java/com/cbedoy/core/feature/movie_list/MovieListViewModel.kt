@@ -1,11 +1,14 @@
-package com.cbedoy.feature_movielist.domain
+package com.cbedoy.core.feature.movie_list
 
+import androidx.lifecycle.ViewModel
 import com.cbedoy.core.data.repository.MovieRepository
 
-class MoviesSortedByUseCase(
+class MovieListViewModel(
     repository: MovieRepository
-) {
+) : ViewModel() {
+
     val topRatedFlow = repository.topRatedMoviesFlow
 
     val popularFlow = repository.popularMoviesFlow
+
 }

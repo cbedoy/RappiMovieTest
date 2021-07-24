@@ -1,9 +1,10 @@
-package com.cbedoy.feature_movielist.presentation.ui
+package com.cbedoy.feature_movielist.ui
 
 import androidx.navigation.fragment.findNavController
 import com.cbedoy.core.data.database.models.Movie
 import com.cbedoy.core.data.datasource.FilterMovieOption
-import com.cbedoy.feature_movielist.presentation.ui.base.MovieListFragment
+import com.cbedoy.core.feature.movie_list.MovieListFragment
+import com.cbedoy.feature_movielist.presentation.ui.PopularMovieListFragmentDirections
 
 class PopularMovieListFragment : MovieListFragment() {
     override val filter: FilterMovieOption
@@ -12,9 +13,9 @@ class PopularMovieListFragment : MovieListFragment() {
     override val onSelectedMovie: (Movie) -> Unit
         get() = {
             findNavController().navigate(
-                PopularMovieListFragmentDirections.actionFragmentPopularToFragmentMovieDetail(
-                    it
-                )
+                    PopularMovieListFragmentDirections.actionFragmentPopularToFragmentMovieDetail(
+                            it
+                    )
             )
         }
 }

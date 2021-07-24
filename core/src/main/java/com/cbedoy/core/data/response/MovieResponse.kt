@@ -13,6 +13,7 @@ data class MovieResponse(
 data class MovieResult(
     val adult: Boolean = false,
     val title: String = "",
+    val originalTitle: String = "",
     val overview: String = "",
     val id: Long = 0,
     val popularity: Float = 0F,

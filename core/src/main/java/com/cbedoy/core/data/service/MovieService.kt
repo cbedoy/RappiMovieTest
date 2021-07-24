@@ -21,6 +21,14 @@ interface MovieService {
         @Query("page") page: Int = 1
     ) : NetworkResponse<MovieResponse, Void>
 
+    @GET("3/search/movie")
+    suspend fun getSearchMovie(
+            @Query("api_key") apiKey: String = "2754de7d0f03edc5c2d26999716f731f",
+            @Query("language") language: String = "en-US",
+            @Query("query") query: String,
+            @Query("page") page: Int = 1
+    ) : NetworkResponse<MovieResponse, Void>
+
     @GET("3/movie/{movieId}/videos")
     suspend fun getVideoDetails(
             @Path("movieId") movieId: Long,

@@ -1,4 +1,4 @@
-package com.cbedoy.feature_movielist.presentation.ui.base
+package com.cbedoy.core.feature.movie_list
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -7,12 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
+import com.cbedoy.core.R
 import com.cbedoy.core.data.database.models.Movie
-import com.cbedoy.feature_movielist.R
-import com.cbedoy.feature_movielist.databinding.FragmentMovielistBinding
 import com.cbedoy.core.data.datasource.FilterMovieOption
-import com.cbedoy.feature_movielist.presentation.MovieListViewModel
-import com.cbedoy.feature_movielist.presentation.ui.adapter.MovieListAdapter
+import com.cbedoy.core.databinding.FragmentMovielistBinding
+import com.cbedoy.core.feature.movie_list.adapter.MovieListAdapter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -29,7 +28,7 @@ abstract class MovieListFragment : Fragment(R.layout.fragment_movielist) {
 
     private val gridLayoutManager: GridLayoutManager
         get() = GridLayoutManager(
-            context, if (isLandscapeOrientation) 4 else 3
+                context, if (isLandscapeOrientation) 4 else 3
         )
 
     private val movieListAdapter = MovieListAdapter {

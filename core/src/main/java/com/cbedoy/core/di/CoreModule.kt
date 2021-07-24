@@ -9,6 +9,7 @@ import com.cbedoy.core.data.datasource.TopRatedMoviesPagingSource
 import com.cbedoy.core.data.repository.MovieRepository
 import com.cbedoy.core.data.repository.MovieRepositoryImpl
 import com.cbedoy.core.data.service.MovieService
+import com.cbedoy.core.feature.movie_list.MovieListViewModel
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
@@ -16,6 +17,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
@@ -77,6 +79,12 @@ val coreModule = module {
         PopularMoviesPagingSource(
             service = get(),
             dao = get()
+        )
+    }
+
+    viewModel {
+        MovieListViewModel(
+                repository = get()
         )
     }
 
