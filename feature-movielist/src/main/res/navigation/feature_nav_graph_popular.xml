@@ -12,11 +12,15 @@
         android:label="@string/popular" >
         <action
             android:id="@+id/action_fragment_popular_to_fragmentMovieDetail"
-            app:destination="@id/fragmentMovieDetail" />
+            app:destination="@id/fragmentMovieDetail">
+            <argument
+                android:name="movie"
+                app:argType="com.cbedoy.core.data.database.models.Movie" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/fragmentMovieDetail"
-        android:name="com.cbedoy.feature_moviedetail.presentation.FragmentMovieDetail"
+        android:name="com.cbedoy.feature_moviedetail.presentation.MovieDetailFragment"
         android:label="@string/detail">
         <argument
             android:name="movie"
