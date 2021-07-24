@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import com.cbedoy.core.data.database.AppDatabase
 import com.cbedoy.core.data.database.dao.MovieDao
+import com.cbedoy.core.data.datasource.PopularMoviesPagingSource
+import com.cbedoy.core.data.datasource.TopRatedMoviesPagingSource
 import com.cbedoy.core.data.repository.MovieRepository
 import com.cbedoy.core.data.repository.MovieRepositoryImpl
 import com.cbedoy.core.data.service.MovieService
@@ -57,6 +59,21 @@ val coreModule = module {
 
     single<MovieRepository>{
         MovieRepositoryImpl(
+            coroutineScope = get(),
+            topRatedMoviesPagingSource = get(),
+            popularMoviesPagingSource = get()
+        )
+    }
+
+    single {
+        TopRatedMoviesPagingSource(
+            service = get(),
+            dao = get()
+        )
+    }
+
+    single {
+        PopularMoviesPagingSource(
             service = get(),
             dao = get()
         )

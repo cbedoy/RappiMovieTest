@@ -1,13 +1,13 @@
 package com.cbedoy.core.data.repository
 
+import androidx.paging.PagingData
 import com.cbedoy.core.data.database.models.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
 
-    val allMoviesFlow: Flow<List<Movie>>
+    val popularMoviesFlow: Flow<PagingData<Movie>>
 
-    suspend fun loadPopularMovies(): Flow<List<Movie>>
+    val topRatedMoviesFlow: Flow<PagingData<Movie>>
 
-    suspend fun loadTopRatedMovies(): Flow<List<Movie>>
 }
