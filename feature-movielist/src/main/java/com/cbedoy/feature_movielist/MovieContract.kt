@@ -1,7 +1,7 @@
 package com.cbedoy.feature_movielist
 
 import com.cbedoy.core.data.database.models.Movie
-import com.cbedoy.feature_movielist.domain.FilterMovieOption
+import com.cbedoy.core.data.datasource.FilterMovieOption
 
 sealed class MovieListState {
     object Ilde: MovieListState()

@@ -2,7 +2,7 @@ package com.cbedoy.feature_movielist.presentation.ui
 
 import androidx.navigation.fragment.findNavController
 import com.cbedoy.core.data.database.models.Movie
-import com.cbedoy.feature_movielist.domain.FilterMovieOption
+import com.cbedoy.core.data.datasource.FilterMovieOption
 import com.cbedoy.feature_movielist.presentation.ui.base.MovieListFragment
 
 class TopRatedMovieListFragment : MovieListFragment(){

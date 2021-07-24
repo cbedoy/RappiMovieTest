@@ -8,7 +8,6 @@ import org.koin.dsl.module
 val featureMovieListModule = module {
     viewModel {
         MovieListViewModel(
-            coroutineScope = get(),
             useCase = get()
         )
     }

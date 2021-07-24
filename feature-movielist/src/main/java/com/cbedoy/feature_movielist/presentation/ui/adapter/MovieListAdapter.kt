@@ -2,6 +2,7 @@ package com.cbedoy.feature_movielist.presentation.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.cbedoy.core.data.database.models.Movie
@@ -9,7 +10,7 @@ import com.cbedoy.feature_movielist.R
 
 class MovieListAdapter(
     private val onSelectedMovie: (Movie) -> Unit
-) : ListAdapter<Movie, MovieViewHolder>(
+) : PagingDataAdapter<Movie, MovieViewHolder>(
     MovieListAdapterDiffUtil
 ){
 
@@ -24,9 +25,12 @@ class MovieListAdapter(
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(getItem(position))
-        holder.itemView.setOnClickListener {
-            onSelectedMovie(getItem(position))
+        val item = getItem(position)
+        item?.run {
+            holder.bind(item)
+            holder.itemView.setOnClickListener {
+                onSelectedMovie(item)
+            }
         }
     }
 

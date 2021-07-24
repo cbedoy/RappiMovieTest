@@ -1,5 +1,6 @@
 package com.cbedoy.feature_movielist.presentation
 
+import androidx.lifecycle.ViewModel
 import com.cbedoy.base.MVIViewModel
 import com.cbedoy.base.Producer
 import com.cbedoy.feature_movielist.MovieListIntent
@@ -9,19 +10,17 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.switchMap
 import kotlinx.coroutines.launch
 
 class MovieListViewModel(
-    coroutineScope: CoroutineScope,
     private val useCase: MoviesSortedByUseCase
-) : MVIViewModel<MovieListState, MovieListIntent>(MovieListState.Ilde, coroutineScope) {
+) : ViewModel() {
 
-    override suspend fun onCollect(intent: MovieListIntent, producer: Producer<MovieListState>) {
-        when(intent) {
-            is MovieListIntent.LoadMoviesSortedBy -> {
-                producer(useCase.loadMoviesFilterBy(intent.filterMovieOption))
-            }
-        }
-    }
+    val topRatedFlow
+        get() = useCase.topRatedFlow
+
+    val popularFlow
+        get() = useCase.popularFlow
 
 }
