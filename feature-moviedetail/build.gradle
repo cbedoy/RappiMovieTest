@@ -41,7 +41,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
     api "androidx.appcompat:appcompat:$app_compat"
-    api project(":base")
     api project(":core")
 
 

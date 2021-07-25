@@ -31,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -40,7 +43,6 @@ dependencies {
     api "androidx.appcompat:appcompat:$app_compat"
     implementation 'com.google.android.material:material:1.4.0'
 
-    api project(":base")
     api project(":core")
     api project(":feature-moviedetail")
 

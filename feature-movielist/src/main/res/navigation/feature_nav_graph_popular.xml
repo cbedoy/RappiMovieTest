@@ -20,6 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentMovieDetail"
+        tools:layout="@layout/fragment_movie_detail"
         android:name="com.cbedoy.feature_moviedetail.presentation.MovieDetailFragment"
         android:label="@string/detail">
         <argument

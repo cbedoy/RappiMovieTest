@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -20,6 +21,7 @@
                 android:id="@+id/movieImage"
                 android:layout_width="0dp"
                 android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/movieName"
@@ -32,17 +34,21 @@
                 android:id="@+id/movieName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="sans-serif"
-                android:maxLines="1"
                 android:textColor="#333"
                 android:textSize="13sp"
+                android:lines="2"
+                android:maxLines="2"
+                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/movieImage"
-                tools:text="This is a movie name that could have more than one line"
-                tools:ignore="SmallSp" />
+                tools:ignore="SmallSp"
+                tools:text="This is a movie name that could have more than one line" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

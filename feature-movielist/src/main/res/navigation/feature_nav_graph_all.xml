@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_all"
+    app:startDestination="@id/allMovieListFragment">
+
+    <fragment
+        android:id="@+id/allMovieListFragment"
+        android:name="com.cbedoy.feature_movielist.ui.AllMovieListFragment"
+        android:label="AllMovieListFragment" >
+        <action
+            android:id="@+id/action_allMovieListFragment_to_movieDetailFragment2"
+            app:destination="@id/movieDetailFragment2">
+            <argument
+                android:name="movie"
+                app:argType="com.cbedoy.core.data.database.models.Movie" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment2"
+        android:name="com.cbedoy.feature_moviedetail.presentation.MovieDetailFragment"
+        android:label="MovieDetailFragment" >
+
+        <argument
+            android:name="movie"
+            app:argType="com.cbedoy.core.data.database.models.Movie" />
+    </fragment>
+</navigation>
