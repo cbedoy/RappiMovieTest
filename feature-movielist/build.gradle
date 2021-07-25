@@ -53,7 +53,6 @@ dependencies {
     api "org.koin:koin-androidx-viewmodel:$koin_version"
     api "org.koin:koin-core:$koin_version"
 
-    api "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     api 'com.squareup.okhttp3:logging-interceptor:4.8.0'
     api "androidx.navigation:navigation-fragment-ktx:$nav_version"
     api "androidx.navigation:navigation-ui-ktx:$nav_version"

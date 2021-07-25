@@ -1,5 +1,6 @@
 package com.cbedoy.core.data.database.dao
 
+import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -14,10 +15,10 @@ interface MovieDao {
     fun getAllMoviesAsFlow(): Flow<List<Movie>>
 
     @Query("SELECT * FROM movie order by popularity desc")
-    suspend fun getPopularMovies(): List<Movie>
+    fun getPopularMovies(): DataSource.Factory<Int, Movie>
 
     @Query("SELECT * FROM movie order by rated desc")
-    suspend fun getTopRated(): List<Movie>
+    fun getTopRated(): DataSource.Factory<Int, Movie>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAll(movies: List<Movie>)

@@ -63,6 +63,7 @@ dependencies {
     api "org.koin:koin-core:$koin_version"
 
     api "androidx.paging:paging-runtime-ktx:$paging_version"
+    api "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
 
     testImplementation 'junit:junit:4.+'

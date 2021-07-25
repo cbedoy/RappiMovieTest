@@ -1,41 +1,36 @@
 package com.cbedoy.core.data.repository
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
+import androidx.lifecycle.LiveData
+import androidx.paging.*
+import com.cbedoy.core.data.database.dao.MovieDao
 import com.cbedoy.core.data.database.models.Movie
-import com.cbedoy.core.data.datasource.PopularMoviesPagingSource
-import com.cbedoy.core.data.datasource.TopRatedMoviesPagingSource
+import com.cbedoy.core.data.datasource.PopularMovieBoundaryCallback
+import com.cbedoy.core.data.datasource.TopRatedMovieBoundaryCallback
 import com.cbedoy.core.data.service.MovieService
 import com.cbedoy.core.data.service.MovieVideoResponse
 import com.haroldadmin.cnradapter.NetworkResponse
-import com.haroldadmin.cnradapter.NetworkResponseAdapter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.Flow
 
-class MovieRepositoryImpl(
-    private val coroutineScope: CoroutineScope,
+class MovieRepositoryImpl constructor(
     private val service: MovieService,
-    private val topRatedMoviesPagingSource: TopRatedMoviesPagingSource,
-    private val popularMoviesPagingSource: PopularMoviesPagingSource
+    private val dao: MovieDao,
+    private val pagedListConfig: PagedList.Config,
+    private val topRatedBoundaryCallback: TopRatedMovieBoundaryCallback,
+    private val popularBoundaryCallback: PopularMovieBoundaryCallback
 ) : MovieRepository {
 
     override suspend fun requestMovieVideoDetails(movieId: Long): NetworkResponse<MovieVideoResponse, Void> {
         return service.getVideoDetails(movieId = movieId)
     }
 
-    override val popularMoviesFlow: Flow<PagingData<Movie>>
-        get() = Pager(
-            config = PagingConfig(pageSize = 20),
-            pagingSourceFactory = { popularMoviesPagingSource }
-        ).flow.cachedIn(coroutineScope)
+    override val popularMoviesFlow: LiveData<PagedList<Movie>>
+        get() = LivePagedListBuilder(
+            dao.getPopularMovies(),
+            pagedListConfig
+        ).setBoundaryCallback(popularBoundaryCallback).build()
 
-    override val topRatedMoviesFlow: Flow<PagingData<Movie>>
-        get() = Pager(
-            config = PagingConfig(pageSize = 20),
-            pagingSourceFactory = { topRatedMoviesPagingSource }
-        ).flow.cachedIn(coroutineScope)
-
-
+    override val topRatedMoviesFlow: LiveData<PagedList<Movie>>
+        get() = LivePagedListBuilder(
+            dao.getPopularMovies(),
+            pagedListConfig
+        ).setBoundaryCallback(topRatedBoundaryCallback).build()
 }

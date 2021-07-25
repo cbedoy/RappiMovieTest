@@ -4,17 +4,14 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import androidx.paging.PagingData
+import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cbedoy.core.R
 import com.cbedoy.core.data.database.models.Movie
 import com.cbedoy.core.data.datasource.FilterMovieOption
 import com.cbedoy.core.databinding.FragmentMovielistBinding
 import com.cbedoy.core.feature.movie_list.adapter.MovieListAdapter
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 abstract class MovieListFragment : Fragment(R.layout.fragment_movielist) {
@@ -47,18 +44,18 @@ abstract class MovieListFragment : Fragment(R.layout.fragment_movielist) {
             }
         }
 
-        lifecycleScope.launch {
-            if (filter == FilterMovieOption.TopRated) {
-                collectFlow(viewModel.topRatedFlow)
-            }else {
-                collectFlow(viewModel.popularFlow)
-            }
+        if (filter == FilterMovieOption.TopRated) {
+            observePageListOf(viewModel.topRatedFlow)
+        }else {
+            observePageListOf(viewModel.popularFlow)
         }
     }
 
-    private suspend fun collectFlow(flow: Flow<PagingData<Movie>>) {
-        flow.collectLatest {
-            movieListAdapter.submitData(it)
-        }
+    private fun observePageListOf(liveData: LiveData<PagedList<Movie>>) {
+        liveData.observe(viewLifecycleOwner, {
+            movieListAdapter.submitList(it)
+        })
     }
+
+
 }

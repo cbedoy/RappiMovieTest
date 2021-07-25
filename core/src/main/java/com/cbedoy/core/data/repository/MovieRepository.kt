@@ -1,17 +1,16 @@
 package com.cbedoy.core.data.repository
 
-import androidx.paging.PagingData
+import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
 import com.cbedoy.core.data.database.models.Movie
 import com.cbedoy.core.data.service.MovieVideoResponse
 import com.haroldadmin.cnradapter.NetworkResponse
-import com.haroldadmin.cnradapter.NetworkResponseAdapter
-import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
 
-    val popularMoviesFlow: Flow<PagingData<Movie>>
+    val popularMoviesFlow: LiveData<PagedList<Movie>>
 
-    val topRatedMoviesFlow: Flow<PagingData<Movie>>
+    val topRatedMoviesFlow: LiveData<PagedList<Movie>>
 
     suspend fun requestMovieVideoDetails(movieId: Long): NetworkResponse<MovieVideoResponse, Void>
 

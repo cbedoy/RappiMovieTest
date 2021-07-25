@@ -1,11 +1,12 @@
 package com.cbedoy.core.di
 
 import android.app.Application
+import androidx.paging.PagedList
 import androidx.room.Room
 import com.cbedoy.core.data.database.AppDatabase
 import com.cbedoy.core.data.database.dao.MovieDao
-import com.cbedoy.core.data.datasource.PopularMoviesPagingSource
-import com.cbedoy.core.data.datasource.TopRatedMoviesPagingSource
+import com.cbedoy.core.data.datasource.PopularMovieBoundaryCallback
+import com.cbedoy.core.data.datasource.TopRatedMovieBoundaryCallback
 import com.cbedoy.core.data.repository.MovieRepository
 import com.cbedoy.core.data.repository.MovieRepositoryImpl
 import com.cbedoy.core.data.service.MovieService
@@ -55,30 +56,34 @@ val coreModule = module {
         return retrofit.create(clazz)
     }
 
+    fun providePagedListConfig() = PagedList.Config.Builder()
+        .setPrefetchDistance(50)
+        .setPageSize(20).build()
+
+    single { providePagedListConfig() }
     single { provideDatabase(androidApplication()) }
     single { providePokeDao(get()) }
 
 
     single<MovieRepository>{
         MovieRepositoryImpl(
-            coroutineScope = get(),
-                service = get(),
-            topRatedMoviesPagingSource = get(),
-            popularMoviesPagingSource = get()
+            service = get(),
+            dao = get(),
+            pagedListConfig = get(),
+            topRatedBoundaryCallback = get(),
+            popularBoundaryCallback = get()
         )
     }
 
     single {
-        TopRatedMoviesPagingSource(
-            service = get(),
-            dao = get()
+        TopRatedMovieBoundaryCallback(
+            service = get()
         )
     }
 
     single {
-        PopularMoviesPagingSource(
-            service = get(),
-            dao = get()
+        PopularMovieBoundaryCallback(
+            service = get()
         )
     }
 

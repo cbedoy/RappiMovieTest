@@ -4,7 +4,6 @@ import androidx.navigation.fragment.findNavController
 import com.cbedoy.core.data.database.models.Movie
 import com.cbedoy.core.data.datasource.FilterMovieOption
 import com.cbedoy.core.feature.movie_list.MovieListFragment
-import com.cbedoy.feature_movielist.presentation.ui.PopularMovieListFragmentDirections
 
 class PopularMovieListFragment : MovieListFragment() {
     override val filter: FilterMovieOption

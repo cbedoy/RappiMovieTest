@@ -2,14 +2,14 @@ package com.cbedoy.core.feature.movie_list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.cbedoy.core.R
 import com.cbedoy.core.data.database.models.Movie
 
 class MovieListAdapter(
     private val onSelectedMovie: (Movie) -> Unit
-) : PagingDataAdapter<Movie, MovieViewHolder>(
+) : PagedListAdapter<Movie, MovieViewHolder>(
     MovieListAdapterDiffUtil
 ){
 
