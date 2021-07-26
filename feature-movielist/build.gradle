@@ -51,9 +51,9 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version"
 
-    api "org.koin:koin-android:$koin_version"
-    api "org.koin:koin-androidx-viewmodel:$koin_version"
-    api "org.koin:koin-core:$koin_version"
+    api "io.insert-koin:koin-android:$koin_version"
+    api "io.insert-koin:koin-android-viewmodel:$koin_version"
+    api "io.insert-koin:koin-core:$koin_version"
 
     api 'com.squareup.okhttp3:logging-interceptor:4.8.0'
     api "androidx.navigation:navigation-fragment-ktx:$nav_version"

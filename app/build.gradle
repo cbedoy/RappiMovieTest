@@ -35,6 +35,7 @@ android {
 dependencies {
     implementation project(":feature-movielist")
     implementation project(":feature-moviedetail")
+    implementation project(":feature-moviesearch")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:$core_ktx"
@@ -46,9 +47,9 @@ dependencies {
     api "androidx.core:core-ktx:$core_ktx"
     api "com.google.android.material:material:$material_design"
 
-    api "org.koin:koin-android:$koin_version"
-    api "org.koin:koin-androidx-viewmodel:$koin_version"
-    api "org.koin:koin-core:$koin_version"
+    api "io.insert-koin:koin-android:$koin_version"
+    api "io.insert-koin:koin-android-viewmodel:$koin_version"
+    api "io.insert-koin:koin-core:$koin_version"
 
     api "androidx.fragment:fragment-ktx:$fragment_version"
 
