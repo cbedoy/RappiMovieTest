@@ -4,11 +4,13 @@ import androidx.lifecycle.ViewModel
 import com.cbedoy.core.data.repository.MovieRepository
 
 class MovieListViewModel(
-    repository: MovieRepository
+    private val repository: MovieRepository
 ) : ViewModel() {
 
-    val topRatedFlow = repository.topRatedMoviesFlow
+    val topRatedFlow
+        get() = repository.topRatedMoviesFlow
 
-    val popularFlow = repository.popularMoviesFlow
+    val popularFlow
+        get() = repository.popularMoviesFlow
 
 }
