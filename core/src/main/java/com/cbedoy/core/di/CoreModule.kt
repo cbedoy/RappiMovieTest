@@ -83,13 +83,17 @@ val coreModule = module {
 
     single {
         TopRatedMovieBoundaryCallback(
-            service = get()
+            service = get(),
+            coroutineScope = get(),
+            dao = get()
         )
     }
 
     single {
         PopularMovieBoundaryCallback(
-            service = get()
+            service = get(),
+            coroutineScope = get(),
+            dao = get()
         )
     }
 

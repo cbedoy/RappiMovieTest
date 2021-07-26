@@ -11,10 +11,10 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-abstract class MovieBoundaryCallback : PagedList.BoundaryCallback<Movie>(), KoinComponent {
-
-    private val coroutineScope by inject<CoroutineScope>()
-    private val dao by inject<MovieDao>()
+abstract class MovieBoundaryCallback(
+    private val coroutineScope: CoroutineScope,
+    private val dao: MovieDao
+) : PagedList.BoundaryCallback<Movie>() {
 
     private var currentPage = 1
 
