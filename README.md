@@ -25,6 +25,17 @@ I have a draft here: https://medium.com/p/a6355f772463/edit which my custom impl
 - Detail movie module.
 
 
+## How it looks
+
+| All | Detail | Top Rated | 
+| --- | --- | -- |
+|![](https://github.com/cbedoy/RappiMovieTest/blob/master/resources/all.png)|![](https://github.com/cbedoy/RappiMovieTest/blob/master/resources/detail.png)| ![](https://github.com/cbedoy/RappiMovieTest/blob/master/resources/top_rated.png)|
+
+| Popular| Search | No found |
+| --- | --- | --- |
+| ![](https://github.com/cbedoy/RappiMovieTest/blob/master/resources/popular.png) | ![](https://github.com/cbedoy/RappiMovieTest/blob/master/resources/search.png)|![](https://github.com/cbedoy/RappiMovieTest/blob/master/resources/no_found.png)|
+
+
 ### How to run
 ```
 git clone git@github.com:cbedoy/RappiMovieTest.git app
@@ -51,6 +62,7 @@ gradlew assembleDebug
 6. Room: https://developer.android.com/topic/libraries/architecture/room.html
 7. MockK: https://mockk.io/
 8. Android Youtube Player: https://github.com/PierfrancescoSoffritti/android-youtube-player
+
 
 # Notes
 
