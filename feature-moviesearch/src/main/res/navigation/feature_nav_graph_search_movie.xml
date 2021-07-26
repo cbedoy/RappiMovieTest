@@ -11,7 +11,11 @@
         android:label="Search" >
         <action
             android:id="@+id/action_searchMovieListFragment_to_movieDetailFragment2"
-            app:destination="@id/fragmentMovieDetail" >
+            app:destination="@id/fragmentMovieDetail"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
             <argument
                 android:name="movie"
                 app:argType="com.cbedoy.core.data.database.models.Movie" />
