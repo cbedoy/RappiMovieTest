@@ -4,12 +4,12 @@ import androidx.paging.PagedList
 import com.cbedoy.core.data.database.dao.MovieDao
 import com.cbedoy.core.data.database.models.Movie
 import com.cbedoy.core.data.response.MovieResponse
-import com.cbedoy.core.data.response.MovieResult
+import com.cbedoy.core.data.toMovie
 import com.haroldadmin.cnradapter.NetworkResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 abstract class MovieBoundaryCallback : PagedList.BoundaryCallback<Movie>(), KoinComponent {
 
@@ -38,16 +38,5 @@ abstract class MovieBoundaryCallback : PagedList.BoundaryCallback<Movie>(), Koin
             }
         }
         currentPage++
-    }
-
-
-    private fun MovieResult.toMovie(): Movie {
-        return Movie(
-            id,
-            image = "https://image.tmdb.org/t/p/w440_and_h660_face/$posterPath",
-            title,
-            overview,
-            popularity
-        )
     }
 }

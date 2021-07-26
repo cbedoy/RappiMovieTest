@@ -13,12 +13,14 @@ import com.cbedoy.core.data.service.MovieService
 import com.cbedoy.core.feature.movie_list.MovieListViewModel
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
@@ -63,6 +65,10 @@ val coreModule = module {
     single { providePagedListConfig() }
     single { provideDatabase(androidApplication()) }
     single { providePokeDao(get()) }
+
+    factory {
+        CoroutineScope(Dispatchers.IO)
+    }
 
 
     single<MovieRepository>{

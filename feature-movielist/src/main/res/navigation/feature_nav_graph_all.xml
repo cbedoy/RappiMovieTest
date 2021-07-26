@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph_all"
     app:startDestination="@id/allMovieListFragment">
 
     <fragment
         android:id="@+id/allMovieListFragment"
+        tools:layout="@layout/fragment_movielist"
         android:name="com.cbedoy.feature_movielist.ui.AllMovieListFragment"
-        android:label="AllMovieListFragment" >
+        android:label="All Movies" >
         <action
-            android:id="@+id/action_allMovieListFragment_to_movieDetailFragment2"
-            app:destination="@id/movieDetailFragment2">
+            android:id="@+id/action_allMovieListFragment_to_movieDetailFragment"
+            app:destination="@id/fragmentMovieDetail">
             <argument
                 android:name="movie"
                 app:argType="com.cbedoy.core.data.database.models.Movie" />
         </action>
     </fragment>
     <fragment
-        android:id="@+id/movieDetailFragment2"
+        android:id="@+id/fragmentMovieDetail"
+        tools:layout="@layout/fragment_movie_detail"
         android:name="com.cbedoy.feature_moviedetail.presentation.MovieDetailFragment"
-        android:label="MovieDetailFragment" >
-
+        android:label="@string/detail" >
         <argument
             android:name="movie"
             app:argType="com.cbedoy.core.data.database.models.Movie" />

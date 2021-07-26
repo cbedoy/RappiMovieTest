@@ -9,6 +9,10 @@
         android:icon="@drawable/action_all"
         android:title="@string/all" />
     <item
+        android:id="@+id/nav_graph_search"
+        android:icon="@drawable/action_search"
+        android:title="@string/search" />
+    <item
         android:id="@+id/nav_graph_popular"
         android:icon="@drawable/action_popular"
         android:title="@string/popular" />

@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/feature_nav_graph_search_movie">
+    android:id="@+id/nav_graph_search"
+    app:startDestination="@id/searchMovieListFragment">
 
+    <fragment
+        android:id="@+id/searchMovieListFragment"
+        android:name="com.cbedoy.feature_moviesearch.presentation.SearchMovieListFragment"
+        android:label="Search" >
+        <action
+            android:id="@+id/action_searchMovieListFragment_to_movieDetailFragment2"
+            app:destination="@id/fragmentMovieDetail" >
+            <argument
+                android:name="movie"
+                app:argType="com.cbedoy.core.data.database.models.Movie" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMovieDetail"
+        tools:layout="@layout/fragment_movie_detail"
+        android:name="com.cbedoy.feature_moviedetail.presentation.MovieDetailFragment"
+        android:label="MovieDetailFragment">
+        <argument
+            android:name="movie"
+            app:argType="com.cbedoy.core.data.database.models.Movie" />
+    </fragment>
 </navigation>

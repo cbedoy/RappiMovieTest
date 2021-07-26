@@ -12,7 +12,7 @@ import com.cbedoy.core.data.database.models.Movie
 import com.cbedoy.core.data.datasource.FilterMovieOption
 import com.cbedoy.core.databinding.FragmentMovielistBinding
 import com.cbedoy.core.feature.movie_list.adapter.MovieListAdapter
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 abstract class MovieListFragment : Fragment(R.layout.fragment_movielist) {
 

@@ -6,6 +6,7 @@ import com.cbedoy.core.data.database.dao.MovieDao
 import com.cbedoy.core.data.database.models.Movie
 import com.cbedoy.core.data.datasource.PopularMovieBoundaryCallback
 import com.cbedoy.core.data.datasource.TopRatedMovieBoundaryCallback
+import com.cbedoy.core.data.response.MovieResponse
 import com.cbedoy.core.data.service.MovieService
 import com.cbedoy.core.data.service.MovieVideoResponse
 import com.haroldadmin.cnradapter.NetworkResponse
@@ -20,6 +21,10 @@ class MovieRepositoryImpl constructor(
 
     override suspend fun requestMovieVideoDetails(movieId: Long): NetworkResponse<MovieVideoResponse, Void> {
         return service.getVideoDetails(movieId = movieId)
+    }
+
+    override suspend fun requestSearchMovie(query: String): NetworkResponse<MovieResponse, Void> {
+        return service.getSearchMovie(query = query)
     }
 
     override val popularMoviesFlow: LiveData<PagedList<Movie>>
