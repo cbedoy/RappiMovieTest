@@ -5,7 +5,7 @@ import com.cbedoy.core.data.service.MovieService
 import com.haroldadmin.cnradapter.NetworkResponse
 
 class PopularMovieBoundaryCallback(
-    private val service: MovieService
+    private val service: MovieService,
 ) : MovieBoundaryCallback() {
 
     override val apiCall: suspend (Int) -> NetworkResponse<MovieResponse, Void>

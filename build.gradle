@@ -29,6 +29,8 @@ buildscript {
         retrofit_version = "2.9.0"
         coil_version = "1.3.0"
         retrofit_version = "2.9.0"
+        mockk_version = "1.12.0"
+        robo_electrict_version = "4.4"
 
         // Lifecycle
         lifecycle_view_model = "2.3.1"

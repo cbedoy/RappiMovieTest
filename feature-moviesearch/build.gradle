@@ -47,8 +47,9 @@ dependencies {
     api "io.insert-koin:koin-android:$koin_version"
     api "io.insert-koin:koin-android-viewmodel:$koin_version"
     api "io.insert-koin:koin-core:$koin_version"
-    testImplementation "io.mockk:mockk:1.10.0"
-    testImplementation 'org.robolectric:robolectric:4.4'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "io.mockk:mockk:$mockk_version"
+    testImplementation "org.robolectric:robolectric:$robo_electrict_version"
     testImplementation "io.insert-koin:koin-test:$koin_version"
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
